@@ -1,0 +1,13 @@
+# basic python envs
+__pycache__/
+*.py[cod]
+*$py.class
+
+# data / database files
+*.sdf
+*.bak
+*.txt
+!placeholder.txt
+
+# generated files
+*.json
