@@ -11,11 +11,15 @@
 * For the following steps, if you see a @ sign at the end, it is not necessary to do this. But if you want to run the ```example()``` in an individual python script successfully, you'll have to.
 
 1. Get the herb data package (`Structure_hunter_execution_pack.zip`). Unzip, and you will find everything in `/home/pikachu/www/CSCCP/Structure_hunter_execution_pack/`.
-2. Place `scaffold_0511.structureIdx.bak` under `data/db/` @
+2. Place `scaffold_testing/scaffold_0511.structureIdx.bak` under `data/db/` @
 3. Put the herbs scaffold data under `data/herbs`, i.e., copy everything in `scaffold_structure example/` in the herb data package to `data/herbs`. @
 4. Put the herbs molecular weight data under `data/mw`, i.e., copy everything in `MW/` in the herb data package to `data/mw`. @
 
 ## How to Run
+
+* For the python scripts, you can always play around with them: manually comment out the executing part , call the `example()` for running an example.
+* The following steps are for single target scaffold only. If you need to run multiple scaffolds in a batch, you will have to write the code.
+
 
 0. First go to the ```src/``` directory:
     ```
