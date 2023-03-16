@@ -1,3 +1,5 @@
+import os
+import shutil
 import argparse
 from rdkit import Chem
 from rdkit.Chem.Descriptors import MolWt
@@ -33,10 +35,19 @@ def search_id_by_structure(m, db_file):
                 f2 = c_mol.HasSubstructMatch(m)
                 if f1 and f2:
                     print('cIdx found:', c_id)
+                    return c_id
             line = f.readline()
 
-    print('search done')
-    return c_id
+    raise Exception('Search done, data not found.')
+
+
+
+def copy_cIdx_by_id(id, cIdx_folder_path):
+    cIdx_file_name = id + '.cIdx'
+    src_path = os.path.join(cIdx_folder_path, cIdx_file_name)
+    dst_path = os.path.normpath('../data/cIdxs')
+    shutil.copy2(src_path, dst_path)
+    pass
 
 
 def example():

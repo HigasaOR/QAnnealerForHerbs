@@ -4,7 +4,7 @@ from dau_input import encode_dau_acceptable
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description='Search scaffold')
+    parser = argparse.ArgumentParser(description='Sample main for testing')
     parser.add_argument('sdf_file', type=str, help="path of the .sdf file")
     parser.add_argument('cIdx_file', type=str, help="path of the .cIdx file")
     parser.add_argument('mw_file', type=str,
