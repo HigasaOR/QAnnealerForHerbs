@@ -5,6 +5,7 @@ __pycache__/
 
 # data / database files
 *.sdf
+*.cIdx
 *.bak
 *.txt
 !placeholder.txt

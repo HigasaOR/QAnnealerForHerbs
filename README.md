@@ -8,6 +8,8 @@
 
 ## Prerequisites 
 
+* If you are doing the "Run with automatic search", you can skip this part.
+
 * For the following steps, if you see a @ sign at the end, it is not necessary to do this. But if you want to run the ```example()``` in an individual python script successfully, you'll have to.
 
 1. Get the herb data package (`Structure_hunter_execution_pack.zip`). Unzip, and you will find everything in `/home/pikachu/www/CSCCP/Structure_hunter_execution_pack/`.
@@ -15,7 +17,38 @@
 3. Put the herbs scaffold data under `data/herbs`, i.e., copy everything in `scaffold_structure example/` in the herb data package to `data/herbs`. @
 4. Put the herbs molecular weight data under `data/mw`, i.e., copy everything in `MW/` in the herb data package to `data/mw`. @
 
-## How to Run
+## Run with automatic search
+0. Go to `src/`
+    ```
+    cd src/
+    ```
+1. Execute `pipeline_v1.py`
+    ```
+    python pipeline_v1.py cIdx_db_file cIdx_folder_path sdf_file mw_file config_num mw_num A B C
+    ```
+    You can see the explanation of arguments by
+    ```
+    python pipeline_v1.py -h
+    ```
+    You will then see a output json file `pipeline_v1_output.json` with the content of:
+    ```
+    {
+        "num_sc": [...],
+        "bp": {
+            "terms": [
+                {
+                    "coefficient": ...,
+                    "polynomial": ...
+                },
+                ...
+            ]
+        },
+        "penalty_bp": {...}
+    }
+    ```
+    You can change the output filename manually in the python script.
+
+## Run with manual search
 
 * For the python scripts, you can always play around with them: manually comment out the executing part , call the `example()` for running an example.
 * The following steps are for single target scaffold only. If you need to run multiple scaffolds in a batch, you will have to write the code.

@@ -1,0 +1,6 @@
+python pipeline_v1.py ^
+    "..\data\db\scaffold_0511.structureIdx.bak" ^
+    "C:\Users\Chien Lee\Programs\lab\quantum\home\pikachu\www\CSCCP\Structure_hunter_execution_pack\core_index" ^
+    "..\data\herbs\1_Cuscuta\scaffold0.sdf" ^
+    "..\data\mw\CA_mw.txt" ^
+    0 0 1 1 1
