@@ -87,6 +87,9 @@ def load_scaffold_data(data_path):
 
         sp_sc_info['sidechain_list'] = sc_list
         spos_sidechain_info.append(sp_sc_info)
+    
+    # sort based on spos id
+    spos_sidechain_info.sort(key=lambda x: x['spos_id'])
 
     data['spos_sidechain_info'] = spos_sidechain_info
 
@@ -104,7 +107,7 @@ def read_herb_data(sdf_path, cIdx_path, mw_path):
 
 def example():
     data = read_herb_data('../data/herbs/1_Cuscuta/scaffold0.sdf',
-                          '../data/cIdxs/s0000000580.cIdx', '../data/mw/CA_mw.txt')
+                          '../data/cIdxs/s0000013029.cIdx', '../data/mw/CA_mw.txt')
 
     # You can save file for manual check
     with open("s0000000580_data.json", "w") as outfile:
@@ -112,6 +115,9 @@ def example():
 
 
 if __name__ == "__main__":
+
+    example()
+    exit()
 
     parser = argparse.ArgumentParser(description='Search scaffold')
     parser.add_argument('sdf_file', type=str, help="path of the .sdf file")
