@@ -110,14 +110,11 @@ def example():
                           '../data/cIdxs/s0000013029.cIdx', '../data/mw/CA_mw.txt')
 
     # You can save file for manual check
-    with open("s0000000580_data.json", "w") as outfile:
+    with open("s0000013029_data.json", "w") as outfile:
         json.dump(data, outfile, indent=4)
 
 
 if __name__ == "__main__":
-
-    example()
-    exit()
 
     parser = argparse.ArgumentParser(description='Search scaffold')
     parser.add_argument('sdf_file', type=str, help="path of the .sdf file")
