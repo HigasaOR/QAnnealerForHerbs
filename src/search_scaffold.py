@@ -2,7 +2,7 @@ import os
 import shutil
 import argparse
 from rdkit import Chem
-from rdkit.Chem.Descriptors import MolWt
+from rdkit.Chem.Descriptors import ExactMolWt
 
 
 def read_single_scaffold_data(file_path):
@@ -15,7 +15,7 @@ def read_single_scaffold_data(file_path):
     '''
 
     suppl = Chem.SDMolSupplier(file_path)
-    return (suppl[0], MolWt(suppl[0]))
+    return (suppl[0], ExactMolWt(suppl[0]))
 
 
 def search_id_by_structure(m, db_file):
