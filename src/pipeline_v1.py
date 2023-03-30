@@ -69,6 +69,8 @@ if __name__ == "__main__":
     W = []
     P = []
     num_sc = []
+    num_vl_electron = []  # store # valence electrons for weight calculation
+
     for spos in data['spos_sidechain_info']:
         spos_id = spos['spos_id']
         sidechain_list = spos['sidechain_list']
@@ -86,6 +88,12 @@ if __name__ == "__main__":
         P.append(tmp_p)
         num_sc.append(len(tmp_w))
 
+        # store valence electron info
+        ve = 0
+        if sidechain_list:
+            ve = sidechain_list[0]['num_valence_electron']
+        num_vl_electron.append(ve)
+
     # W: contains ALL sidechain weights of substituted positions
     # P: contains ALL sidechain probs. of substituted positions
 
@@ -97,11 +105,16 @@ if __name__ == "__main__":
     c_W = list(W[i] for i in sposs)  # [[w11, w12, w13], [w21, w22], ...]
     c_P = list(P[i] for i in sposs)
     c_num_sc = list(num_sc[i] for i in sposs)  # [3, 2, ...]
+    c_num_vl_electron = list(num_vl_electron[i] for i in sposs)
     c_tot_sc = sum(c_num_sc)
 
     H_weight = 1.007825032
-    Wt = data['possible_molecular_weights'][mw_num] - \
-        (data['scaffold_weight'] - num_spos * H_weight)
+    Wt = data['possible_molecular_weights'][mw_num]
+    pure_scaffold_weight = data['scaffold_weight']
+    for nvl in c_num_vl_electron:
+        pure_scaffold_weight -= nvl * H_weight
+    
+    Wt -= pure_scaffold_weight
 
     (bp, penalty_bp) = encode_dau_acceptable(
         c_tot_sc, c_num_sc, Wt, c_W, c_P, A, B, C)
